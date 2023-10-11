@@ -1,0 +1,335 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"..\\Lib\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.Scripts.activate_this",
+        "description": ".venv.Scripts.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "class myThread(threading.Thread):\n    # override run function\n    def run(self):\n        print(\"Thread - 3\")\n# Create a new thread:\nthread3 = myThread()\nthread3.start()",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "threadFunction1",
+        "kind": 2,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "def threadFunction1():\n    print(\"This is thread 1\\n \")\n# Create a thread\nthread1 = threading.Thread(target=threadFunction1)\n# Start the thread\nthread1.start()\n# Thread example: function with args\ndef threadFunction2(name):\n    print(\"This is thread \" + name)\n# create a thread",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "threadFunction2",
+        "kind": 2,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "def threadFunction2(name):\n    print(\"This is thread \" + name)\n# create a thread\nthread2 = threading.Thread(target=threadFunction2, args=[\"thread2\"])\nthread2.start()\n# Create thread in class\nclass myThread(threading.Thread):\n    # override run function\n    def run(self):\n        print(\"Thread - 3\")",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "thread1",
+        "kind": 5,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "thread1 = threading.Thread(target=threadFunction1)\n# Start the thread\nthread1.start()\n# Thread example: function with args\ndef threadFunction2(name):\n    print(\"This is thread \" + name)\n# create a thread\nthread2 = threading.Thread(target=threadFunction2, args=[\"thread2\"])\nthread2.start()\n# Create thread in class",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "thread2",
+        "kind": 5,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "thread2 = threading.Thread(target=threadFunction2, args=[\"thread2\"])\nthread2.start()\n# Create thread in class\nclass myThread(threading.Thread):\n    # override run function\n    def run(self):\n        print(\"Thread - 3\")\n# Create a new thread:\nthread3 = myThread()\nthread3.start()",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "thread3",
+        "kind": 5,
+        "importPath": "1-ThreadBasic",
+        "description": "1-ThreadBasic",
+        "peekOfCode": "thread3 = myThread()\nthread3.start()",
+        "detail": "1-ThreadBasic",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "2-ThreadJoin",
+        "description": "2-ThreadJoin",
+        "peekOfCode": "class myThread(threading.Thread):\n    def __init__(self, threadID):\n        threading.Thread.__init__(self)\n        self.threadID = threadID\n    def run(self):\n        print(\"This is thread - \" + str(self.threadID))\n        time.sleep(1)\n        print(\"Thread\" + str(self.threadID) + \"terminates!\")\n# Create five threads\nthreads = []",
+        "detail": "2-ThreadJoin",
+        "documentation": {}
+    },
+    {
+        "label": "threads",
+        "kind": 5,
+        "importPath": "2-ThreadJoin",
+        "description": "2-ThreadJoin",
+        "peekOfCode": "threads = []\nfor i in range(5):\n    threadTemp = myThread(i)\n    threadTemp.start()\n    threads.append(threadTemp)\n# Wait for all threads to be completed.\nfor i in threads:\n    i.join()\nprint(\"Exit main thread!\")",
+        "detail": "2-ThreadJoin",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "3-ThreadMultipleThread",
+        "description": "3-ThreadMultipleThread",
+        "peekOfCode": "class myThread(threading.Thread):\n    def __init__(self, threadID):\n        threading.Thread.__init__(self)\n        self.threadID = threadID\n    def run(self):\n        print(\"This is thread - \" + str(self.threadID))\nfor i in range(5):\n    threadTemp = myThread(i)\n    threadTemp.start()",
+        "detail": "3-ThreadMultipleThread",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "4-ThreadMultipleThread_time",
+        "description": "4-ThreadMultipleThread_time",
+        "peekOfCode": "class myThread(threading.Thread):\n    def __init__(self, threadID):\n        threading.Thread.__init__(self)\n        self.threadID = threadID\n    def run(self):\n        print(\"This is thread - \" + str(self.threadID))\n        # The time.sleep(t) function takes one argument \"t\", indicates the number of seconds\n        # an execution to be suspended\n        time.sleep(self.threadID)\n        print(\"Thread\" + str(self.threadID) + \" terminates!\")",
+        "detail": "4-ThreadMultipleThread_time",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "5-timer",
+        "description": "5-timer",
+        "peekOfCode": "class myThread(threading.Thread):\n    __terminate = False\n    __count = 0\n    def terminate(self):\n        self.__terminate = True\n    def count(self):\n        while not self.__terminate:\n            self.__count += 1\n            time.sleep(1)\n        print(\"Thread terminated, count to \" + str(self.__count))",
+        "detail": "5-timer",
+        "documentation": {}
+    },
+    {
+        "label": "t1",
+        "kind": 5,
+        "importPath": "5-timer",
+        "description": "5-timer",
+        "peekOfCode": "t1 = myThread()\nt1.start()\nfor i in range(5):\n    t1.display()\n    time.sleep(2)\nt1.terminate()",
+        "detail": "5-timer",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "6-timer2",
+        "description": "6-timer2",
+        "peekOfCode": "class myThread:\n    __terminate = False\n    def __init__(self, timer):\n        self.__timer = timer\n    def count(self):\n        i = 0\n        while not self.__terminate:\n            i += 1\n            time.sleep(1)\n        print(\"Thread terminated, count to \" + str(i))",
+        "detail": "6-timer2",
+        "documentation": {}
+    },
+    {
+        "label": "thread1",
+        "kind": 5,
+        "importPath": "6-timer2",
+        "description": "6-timer2",
+        "peekOfCode": "thread1 = myThread(30)\nthread1.run()\nthread2 = myThread(5)\nthread2.run()",
+        "detail": "6-timer2",
+        "documentation": {}
+    },
+    {
+        "label": "thread2",
+        "kind": 5,
+        "importPath": "6-timer2",
+        "description": "6-timer2",
+        "peekOfCode": "thread2 = myThread(5)\nthread2.run()",
+        "detail": "6-timer2",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "ExampleSorting",
+        "description": "ExampleSorting",
+        "peekOfCode": "class myThread:\n    __results = []\n    __threadList = []\n    def __init__(self, inputList):\n        self.input = inputList\n    threadLock = threading.Lock()\n    def foo(self, inputNum):\n        time.sleep(inputNum)\n        self.threadLock.acquire()\n        self.__results.append(inputNum)",
+        "detail": "ExampleSorting",
+        "documentation": {}
+    },
+    {
+        "label": "thread1",
+        "kind": 5,
+        "importPath": "ExampleSorting",
+        "description": "ExampleSorting",
+        "peekOfCode": "thread1 = myThread([3, 2, 1, 6, 3, 4, 8])\nthread1.run()\nthread1.join()\nthread1.display()",
+        "detail": "ExampleSorting",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "ExampleThreadResourceContention",
+        "description": "ExampleThreadResourceContention",
+        "peekOfCode": "class myThread:\n    # Global variable count\n    a = []\n    for i in range(20):\n        a.append(i)\n    # uncomment next line to make the code correct\n    # threadLock=threading.Lock()\n    def getItem(self, tName):\n        while 1:\n            # uncomment next line to make the code correct",
+        "detail": "ExampleThreadResourceContention",
+        "documentation": {}
+    },
+    {
+        "label": "thread1",
+        "kind": 5,
+        "importPath": "ExampleThreadResourceContention",
+        "description": "ExampleThreadResourceContention",
+        "peekOfCode": "thread1 = myThread()\nthread1.run()",
+        "detail": "ExampleThreadResourceContention",
+        "documentation": {}
+    },
+    {
+        "label": "myThread",
+        "kind": 6,
+        "importPath": "TimerExample",
+        "description": "TimerExample",
+        "peekOfCode": "class myThread(threading.Thread):\n    def __init__(self, ThreadID, name, counter):\n        threading.Thread.__init__(self)\n        self.threadID = ThreadID\n        self.name = name\n        self.counter = counter\n        # A flag for terminating the thread\n        self.flag = False\n    def exit(self):\n        self.flag = True",
+        "detail": "TimerExample",
+        "documentation": {}
+    },
+    {
+        "label": "countDown",
+        "kind": 2,
+        "importPath": "TimerExample",
+        "description": "TimerExample",
+        "peekOfCode": "def countDown(timer):\n    time.sleep(timer)\n    thread1.exit()\n    thread2.exit()\nthread1 = myThread(1, \"Thread-1\", 1)\nthread2 = myThread(2, \"Thread-2\", 2)\nthread3 = threading.Thread(target=countDown, args=[5])\nthread1.start()\nthread2.start()\nthread3.start()",
+        "detail": "TimerExample",
+        "documentation": {}
+    },
+    {
+        "label": "thread1",
+        "kind": 5,
+        "importPath": "TimerExample",
+        "description": "TimerExample",
+        "peekOfCode": "thread1 = myThread(1, \"Thread-1\", 1)\nthread2 = myThread(2, \"Thread-2\", 2)\nthread3 = threading.Thread(target=countDown, args=[5])\nthread1.start()\nthread2.start()\nthread3.start()",
+        "detail": "TimerExample",
+        "documentation": {}
+    },
+    {
+        "label": "thread2",
+        "kind": 5,
+        "importPath": "TimerExample",
+        "description": "TimerExample",
+        "peekOfCode": "thread2 = myThread(2, \"Thread-2\", 2)\nthread3 = threading.Thread(target=countDown, args=[5])\nthread1.start()\nthread2.start()\nthread3.start()",
+        "detail": "TimerExample",
+        "documentation": {}
+    },
+    {
+        "label": "thread3",
+        "kind": 5,
+        "importPath": "TimerExample",
+        "description": "TimerExample",
+        "peekOfCode": "thread3 = threading.Thread(target=countDown, args=[5])\nthread1.start()\nthread2.start()\nthread3.start()",
+        "detail": "TimerExample",
+        "documentation": {}
+    }
+]

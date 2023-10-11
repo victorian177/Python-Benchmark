@@ -1,20 +1,24 @@
 import threading
 import time
-#create a class
+
+# create a class
+
 
 class myThread(threading.Thread):
     def __init__(self, threadID):
         threading.Thread.__init__(self)
-        self.threadID=threadID
+        self.threadID = threadID
+
     def run(self):
-        print("This is thread - "+str(self.threadID))
+        print("This is thread - " + str(self.threadID))
         time.sleep(1)
-        print("Thread"+str(self.threadID)+"terminates!")
+        print("Thread" + str(self.threadID) + "terminates!")
+
 
 # Create five threads
-threads=[]
+threads = []
 for i in range(5):
-    threadTemp=myThread(i)
+    threadTemp = myThread(i)
     threadTemp.start()
     threads.append(threadTemp)
 
