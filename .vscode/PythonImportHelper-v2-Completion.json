@@ -54,6 +54,22 @@
         "documentation": {}
     },
     {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -279,11 +295,29 @@
         "documentation": {}
     },
     {
+        "label": "OperationType",
+        "kind": 6,
+        "importPath": "benchmark",
+        "description": "benchmark",
+        "peekOfCode": "class OperationType(Enum):\n    FLOAT = \"float\"\n    INTEGER = \"integer\"\nclass PrecisionType(Enum):\n    SINGLE = \"single\"\n    DOUBLE = \"double\"\n# Benchmarking class\nclass Benchmark:\n    def __init__(\n        self,",
+        "detail": "benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "PrecisionType",
+        "kind": 6,
+        "importPath": "benchmark",
+        "description": "benchmark",
+        "peekOfCode": "class PrecisionType(Enum):\n    SINGLE = \"single\"\n    DOUBLE = \"double\"\n# Benchmarking class\nclass Benchmark:\n    def __init__(\n        self,\n        size: int = 100,\n        operation_type: OperationType = OperationType.FLOAT,\n        precision_type: PrecisionType = PrecisionType.DOUBLE,",
+        "detail": "benchmark",
+        "documentation": {}
+    },
+    {
         "label": "Benchmark",
         "kind": 6,
         "importPath": "benchmark",
         "description": "benchmark",
-        "peekOfCode": "class Benchmark:\n    def __init__(self, size=10000):\n        self.size = size\n        num_flops_LU = (2 / 3) * (self.size**3)\n        num_flops_other = 2 * (self.size**2)\n        self.num_flops = num_flops_LU + num_flops_other\n    def run(self):\n        execution_time = timeit.timeit(self.benchmark, number=1)\n        mflops = self.num_flops / execution_time\n        print(f\"Time spent: {execution_time:.6f} seconds\")",
+        "peekOfCode": "class Benchmark:\n    def __init__(\n        self,\n        size: int = 100,\n        operation_type: OperationType = OperationType.FLOAT,\n        precision_type: PrecisionType = PrecisionType.DOUBLE,\n        scale: Tuple[int, int] = (1, 5),\n        iterations=5,\n    ):\n        \"\"\"",
         "detail": "benchmark",
         "documentation": {}
     },
