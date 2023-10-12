@@ -108,5 +108,3 @@ class Benchmark:
 if __name__ == "__main__":
     benchmark = Benchmark()
     benchmark.run()
-    benchmark.operation_type = OperationType.INTEGER
-    benchmark.run()
