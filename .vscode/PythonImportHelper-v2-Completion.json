@@ -45,6 +45,33 @@
         "documentation": {}
     },
     {
+        "label": "timeit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "timeit",
+        "description": "timeit",
+        "detail": "timeit",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "scipy.linalg",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy.linalg",
+        "description": "scipy.linalg",
+        "detail": "scipy.linalg",
+        "documentation": {}
+    },
+    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.Scripts.activate_this",
@@ -249,6 +276,15 @@
         "description": "6-timer2",
         "peekOfCode": "thread2 = myThread(5)\nthread2.run()",
         "detail": "6-timer2",
+        "documentation": {}
+    },
+    {
+        "label": "Benchmark",
+        "kind": 6,
+        "importPath": "benchmark",
+        "description": "benchmark",
+        "peekOfCode": "class Benchmark:\n    def __init__(self, size=10000):\n        self.size = size\n        num_flops_LU = (2 / 3) * (self.size**3)\n        num_flops_other = 2 * (self.size**2)\n        self.num_flops = num_flops_LU + num_flops_other\n    def run(self):\n        execution_time = timeit.timeit(self.benchmark, number=1)\n        mflops = self.num_flops / execution_time\n        print(f\"Time spent: {execution_time:.6f} seconds\")",
+        "detail": "benchmark",
         "documentation": {}
     },
     {
