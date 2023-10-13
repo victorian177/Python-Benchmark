@@ -168,6 +168,8 @@ class Benchmark:
 
         with open(save_dir / "results.json", "w") as results_file:
             json.dump(self.results, results_file)
+        
+        print("Settings have been saved to 'saves' folder.")
 
     def display_settings(self):
         print("\nSETTINGS\n")
