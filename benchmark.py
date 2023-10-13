@@ -31,7 +31,7 @@ class ConcurrencyLevel(Enum):
 
 
 class Benchmark:
-    DEFAULT_SIZE = 100
+    DEFAULT_SIZE = 10000
     DEFAULT_OPERATION_TYPE = OperationType.FLOAT
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
@@ -39,7 +39,7 @@ class Benchmark:
     DEFAULT_RUNS = 3
     DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE
 
-    TIMEOUT = 1
+    TIMEOUT = 10
     SAVE_DIR = Path("saves")
 
     def __init__(self):

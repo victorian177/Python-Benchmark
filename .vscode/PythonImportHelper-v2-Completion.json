@@ -340,7 +340,7 @@
         "kind": 6,
         "importPath": "benchmark",
         "description": "benchmark",
-        "peekOfCode": "class PrecisionType(Enum):\n    SINGLE = np.float32\n    DOUBLE = np.float64\nclass ConcurrencyLevel(Enum):\n    ONE = 1\n    TWO = 2\n    FOUR = 4\n    EIGHT = 8\nclass Benchmark:\n    DEFAULT_SIZE = 100",
+        "peekOfCode": "class PrecisionType(Enum):\n    SINGLE = np.float32\n    DOUBLE = np.float64\nclass ConcurrencyLevel(Enum):\n    ONE = 1\n    TWO = 2\n    FOUR = 4\n    EIGHT = 8\nclass Benchmark:\n    DEFAULT_SIZE = 10000",
         "detail": "benchmark",
         "documentation": {}
     },
@@ -349,7 +349,7 @@
         "kind": 6,
         "importPath": "benchmark",
         "description": "benchmark",
-        "peekOfCode": "class ConcurrencyLevel(Enum):\n    ONE = 1\n    TWO = 2\n    FOUR = 4\n    EIGHT = 8\nclass Benchmark:\n    DEFAULT_SIZE = 100\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)",
+        "peekOfCode": "class ConcurrencyLevel(Enum):\n    ONE = 1\n    TWO = 2\n    FOUR = 4\n    EIGHT = 8\nclass Benchmark:\n    DEFAULT_SIZE = 10000\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)",
         "detail": "benchmark",
         "documentation": {}
     },
@@ -358,7 +358,7 @@
         "kind": 6,
         "importPath": "benchmark",
         "description": "benchmark",
-        "peekOfCode": "class Benchmark:\n    DEFAULT_SIZE = 100\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)\n    DEFAULT_ITERATIONS = 1\n    DEFAULT_RUNS = 3\n    DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE\n    TIMEOUT = 1\n    SAVE_DIR = Path(\"saves\")",
+        "peekOfCode": "class Benchmark:\n    DEFAULT_SIZE = 10000\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)\n    DEFAULT_ITERATIONS = 1\n    DEFAULT_RUNS = 3\n    DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE\n    TIMEOUT = 10\n    SAVE_DIR = Path(\"saves\")",
         "detail": "benchmark",
         "documentation": {}
     },
