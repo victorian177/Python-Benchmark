@@ -358,7 +358,7 @@
         "kind": 6,
         "importPath": "benchmark",
         "description": "benchmark",
-        "peekOfCode": "class Benchmark:\n    DEFAULT_SIZE = 10000\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)\n    DEFAULT_ITERATIONS = 1\n    DEFAULT_RUNS = 3\n    DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE\n    TIMEOUT = 10\n    SAVE_DIR = Path(\"saves\")",
+        "peekOfCode": "class Benchmark:\n    DEFAULT_SIZE = 10000\n    DEFAULT_OPERATION_TYPE = OperationType.FLOAT\n    DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE\n    DEFAULT_SCALE = (1, 5)\n    DEFAULT_ITERATIONS = 1000\n    DEFAULT_RUNS = 3\n    DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE\n    TIMEOUT = 10\n    SAVE_DIR = Path(\"saves\")",
         "detail": "benchmark",
         "documentation": {}
     },

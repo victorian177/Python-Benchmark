@@ -13,6 +13,7 @@ from tabulate import SEPARATING_LINE, tabulate
 np.random.seed(42)
 
 
+# Options
 class OperationType(Enum):
     FLOAT = "float"
     INTEGER = "integer"
@@ -31,16 +32,17 @@ class ConcurrencyLevel(Enum):
 
 
 class Benchmark:
+    # Default values
     DEFAULT_SIZE = 10000
     DEFAULT_OPERATION_TYPE = OperationType.FLOAT
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
-    DEFAULT_ITERATIONS = 1
+    DEFAULT_ITERATIONS = 5
     DEFAULT_RUNS = 3
     DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE
 
-    TIMEOUT = 10
-    SAVE_DIR = Path("saves")
+    TIMEOUT = 10  # Times between benchmark runs
+    SAVE_DIR = Path("saves")  # Directory to save settings and results
 
     def __init__(self):
         """
@@ -65,10 +67,16 @@ class Benchmark:
         self.concurrency = kwargs.get("concurrency", self.DEFAULT_CONCURRENCY)
         self.runs = kwargs.get("runs", self.DEFAULT_RUNS)
 
-        num_ops_LU = (2 / 3) * (self.size**3)
-        num_ops_other = 2 * (self.size**2)
+        # Calculate total operations based on matrix size and iterations
+        num_ops_LU = (2 / 3) * (
+            self.size**3
+        )  # The upper bound on the number of operations carried out during the LU factorisation.
+        num_ops_other = 2 * (
+            self.size**2
+        )  # The upper bound on the number of operations carried out during the solving for x.
         self.total_ops = self.iterations * (num_ops_LU + num_ops_other)
 
+        # Create settings dictionary for display and saving
         precision_value = (
             "Single(32 Bit)"
             if self.precision_type == PrecisionType.SINGLE
@@ -86,6 +94,7 @@ class Benchmark:
             "Scale": self.scale,
             "Iterations": self.iterations,
             "Concurrency": concurrency_value,
+            "Runs": self.runs,
         }
 
         self.results = {
@@ -97,6 +106,9 @@ class Benchmark:
         self.init_save_dir()
 
     def init_save_dir(self):
+        """
+        Initialize the save directory if it does not exist.
+        """
         if not os.path.exists(self.SAVE_DIR):
             os.mkdir(self.SAVE_DIR)
 
@@ -160,25 +172,37 @@ class Benchmark:
         self.save()
 
     def save(self):
+        """
+        Save the benchmark settings and results to a specified directory.
+        """
+        # Create a directory based on the current timestamp
         save_dir = self.SAVE_DIR / datetime.now().strftime("%d%m%y_%H%M%S")
         os.mkdir(save_dir)
 
+        # Save settings and results as JSON files
         with open(save_dir / "settings.json", "w") as settings_file:
             json.dump(self.settings, settings_file)
 
         with open(save_dir / "results.json", "w") as results_file:
             json.dump(self.results, results_file)
-        
+
         print("Settings have been saved to 'saves' folder.")
 
     def display_settings(self):
+        """
+        Display the benchmark settings.
+        """
         print("\nSETTINGS\n")
+
         settings_to_display = [["Setting", "Value"]] + [
             [k, v] for k, v in self.settings.items()
         ]
         print(tabulate(settings_to_display, "firstrow"))
 
     def display_results(self):
+        """
+        Display the benchmark results including averages and standard deviations.
+        """
         print("\nRESULTS\n")
 
         results_to_display = [["Index"] + list(self.results.keys())]
@@ -205,14 +229,14 @@ class Benchmark:
         kwargs = {}
 
         print(
-            """
+            f"""
     Here is an implementation of the LinPack benchmarker in Python.
     Here are the options that are to be entered:
 
     Size:
         - The size of the matrix to be solved. 
-        - Value inputted should be greater than or equal 10000. 
-        DEFAULT: 10000
+        - Value inputted should be greater than or equal to {self.DEFAULT_SIZE}. 
+        DEFAULT: {self.DEFAULT_SIZE}
         
     Operation Type:
         - The type of operation to be carried out. 
@@ -228,12 +252,12 @@ class Benchmark:
         - The range of values that the elements matrix would take.
         - The format for entry is: lower, upper where (upper > lower).
         - An example input is: 10, 100.
-        DEFAULT: 1, 5
+        DEFAULT: {self.DEFAULT_SCALE}
 
     Iterations:
         - The number of times to run the benchmark.
-        - Value should not be less than 100.
-        DEFAULT: 100
+        - Value should not be less than {self.DEFAULT_ITERATIONS}.
+        DEFAULT: {self.DEFAULT_ITERATIONS}
         
     Concurrency:
         - The number of threads to execute the benchmark on.
@@ -242,8 +266,8 @@ class Benchmark:
 
     Runs:
         - The number of times to run the benchmark.
-        - Value should be greater than or equal to 3.
-        DEFAULT: 3
+        - Value should be greater than or equal to {self.DEFAULT_RUNS}.
+        DEFAULT: {self.DEFAULT_RUNS}
         
     NOTE: If an invalid input is supplied, it reverts to the default.
             """
