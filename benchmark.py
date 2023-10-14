@@ -63,7 +63,7 @@ class Benchmark:
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
     DEFAULT_ITERATIONS = 10
-    DEFAULT_RUNS = 1
+    DEFAULT_RUNS = 3
     DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE
 
     TIMEOUT = 3  # Times between benchmark runs
