@@ -1,13 +1,17 @@
 import json
 import os
+import platform
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
+import psutil
 import scipy.linalg as la
+from ascii_graph import Pyasciigraph
 from tabulate import SEPARATING_LINE, tabulate
 
 np.random.seed(42)
@@ -31,17 +35,38 @@ class ConcurrencyLevel(Enum):
     EIGHT = 8
 
 
+[
+    [
+        "Index",
+        "Time spent (seconds)",
+        "[Giga] Operations per second",
+        "[Giga] OPS per thread",
+    ],
+    [1, 0.0057058, 0.12034537955530629, 0.12034537955530629],
+    [2, 0.0091474, 0.07506686781672023, 0.07506686781672023],
+    [3, 0.0110542, 0.0621181692629649, 0.0621181692629649],
+    "\x01",
+    ["Average", 0.0086358, 0.08584347221166382, 0.08584347221166382],
+    [
+        "Standard deviation",
+        0.0022132399418047745,
+        0.024962684234953243,
+        0.024962684234953243,
+    ],
+]
+
+
 class Benchmark:
     # Default values
-    DEFAULT_SIZE = 10000
+    DEFAULT_SIZE = 10_000
     DEFAULT_OPERATION_TYPE = OperationType.FLOAT
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
-    DEFAULT_ITERATIONS = 5
-    DEFAULT_RUNS = 3
+    DEFAULT_ITERATIONS = 1
+    DEFAULT_RUNS = 10
     DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE
 
-    TIMEOUT = 10  # Times between benchmark runs
+    TIMEOUT = 3  # Times between benchmark runs
     SAVE_DIR = Path("saves")  # Directory to save settings and results
 
     def __init__(self):
@@ -86,6 +111,15 @@ class Benchmark:
             "Float" if self.operation_type == OperationType.FLOAT else "Integer"
         )
         concurrency_value = self.concurrency.value
+
+        self.system_information = {
+            "OS": platform.system(),
+            "Release": platform.release(),
+            "CPU Information": platform.processor(),
+            "CPU Count(Logical)": psutil.cpu_count(logical=True),
+            "CPU Count(Physical)": psutil.cpu_count(logical=True),
+            "RAM": f"{psutil.virtual_memory().total / (1024 ** 3):.2f} GB",
+        }
 
         self.settings = {
             "Size": self.size,
@@ -143,6 +177,7 @@ class Benchmark:
         """
         Run the benchmark and print the results.
         """
+        self.display_system_information()
         self.display_settings()
         for _ in range(self.runs):
             # Measure the execution time for the benchmark
@@ -186,7 +221,17 @@ class Benchmark:
         with open(save_dir / "results.json", "w") as results_file:
             json.dump(self.results, results_file)
 
-        print("Settings have been saved to 'saves' folder.")
+        print("\n\nData has been saved to 'saves' folder.")
+
+    def display_system_information(self):
+        """
+        Display system information
+        """
+        print("\nSYSTEM INFORMATION\n")
+        system_information_to_display = [["Information", "Value"]] + [
+            [k, v] for k, v in self.system_information.items()
+        ]
+        print(tabulate(system_information_to_display, "firstrow"))
 
     def display_settings(self):
         """
@@ -224,6 +269,29 @@ class Benchmark:
         results_to_display.append(stds)
 
         print(tabulate(results_to_display, headers="firstrow"))
+
+        for k, v in self.results.items():
+            _, ax = plt.subplots()
+            bar_width = 0.5
+
+            x = [i + 1 for i in range(len(v))]
+            ax.bar(
+                x,
+                v,
+                width=bar_width,
+                align="center",
+                color="blue",
+                alpha=0.7,
+                edgecolor="black",
+                linewidth=1.2,
+            )
+
+            # Adding labels and a title
+            ax.set_xlabel("Runs")
+            ax.set_ylabel("Values")
+            ax.set_title(k)
+
+            plt.show()
 
     def get_kwargs(self):
         kwargs = {}
