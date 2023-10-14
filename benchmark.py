@@ -62,8 +62,8 @@ class Benchmark:
     DEFAULT_OPERATION_TYPE = OperationType.FLOAT
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
-    DEFAULT_ITERATIONS = 1
-    DEFAULT_RUNS = 10
+    DEFAULT_ITERATIONS = 10
+    DEFAULT_RUNS = 1
     DEFAULT_CONCURRENCY = ConcurrencyLevel.ONE
 
     TIMEOUT = 3  # Times between benchmark runs
@@ -221,6 +221,9 @@ class Benchmark:
         with open(save_dir / "results.json", "w") as results_file:
             json.dump(self.results, results_file)
 
+        with open(save_dir / "system_information.json", "w") as system_information_file:
+            json.dump(self.system_information, system_information_file)
+
         print("\n\nData has been saved to 'saves' folder.")
 
     def display_system_information(self):
@@ -270,15 +273,14 @@ class Benchmark:
 
         print(tabulate(results_to_display, headers="firstrow"))
 
+        _, axes = plt.subplots(nrows=1, ncols=3, figsize=(15, 5))
+        index = 0
         for k, v in self.results.items():
-            _, ax = plt.subplots()
-            bar_width = 0.5
-
             x = [i + 1 for i in range(len(v))]
-            ax.bar(
+            axes[index].bar(
                 x,
                 v,
-                width=bar_width,
+                width=0.5,
                 align="center",
                 color="blue",
                 alpha=0.7,
@@ -287,11 +289,13 @@ class Benchmark:
             )
 
             # Adding labels and a title
-            ax.set_xlabel("Runs")
-            ax.set_ylabel("Values")
-            ax.set_title(k)
+            axes[index].set_xlabel("Runs")
+            axes[index].set_ylabel("Values")
+            axes[index].set_title(k)
+            
+            index += 1
 
-            plt.show()
+        plt.show()
 
     def get_kwargs(self):
         kwargs = {}
