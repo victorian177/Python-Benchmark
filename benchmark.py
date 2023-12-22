@@ -35,30 +35,9 @@ class ConcurrencyLevel(Enum):
     EIGHT = 8
 
 
-[
-    [
-        "Index",
-        "Time spent (seconds)",
-        "[Giga] Operations per second",
-        "[Giga] OPS per thread",
-    ],
-    [1, 0.0057058, 0.12034537955530629, 0.12034537955530629],
-    [2, 0.0091474, 0.07506686781672023, 0.07506686781672023],
-    [3, 0.0110542, 0.0621181692629649, 0.0621181692629649],
-    "\x01",
-    ["Average", 0.0086358, 0.08584347221166382, 0.08584347221166382],
-    [
-        "Standard deviation",
-        0.0022132399418047745,
-        0.024962684234953243,
-        0.024962684234953243,
-    ],
-]
-
-
 class Benchmark:
     # Default values
-    DEFAULT_SIZE = 10_000
+    DEFAULT_SIZE = 1_000
     DEFAULT_OPERATION_TYPE = OperationType.FLOAT
     DEFAULT_PRECISION_TYPE = PrecisionType.DOUBLE
     DEFAULT_SCALE = (1, 5)
